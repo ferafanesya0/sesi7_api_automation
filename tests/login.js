@@ -81,4 +81,16 @@ describe("Feature Reqres", function () {
           assert.strictEqual(data.job, "developer");
         });
 
+     it("DELETE User", async function () {
+          const response = await fetch("https://reqres.in/api/users/2", {
+            method: "DELETE",
+            headers: {
+                     "Content-Type": "application/json",
+                     "x-api-key": "reqres-free-v1"
+            },
+          });
+
+          assert.strictEqual(response.status, 204);
+        });
+
 });
