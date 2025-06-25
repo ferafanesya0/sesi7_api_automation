@@ -39,5 +39,26 @@ describe("Feature Reqres", function () {
         assert.strictEqual(response.status, 200);
         assert.strictEqual(data.data.id, 2);
         assert.strictEqual(data.data.email, "janet.weaver@reqres.in");
-      });
+  });
+
+  it("POST Register - successful", async function () {
+       const response = await fetch("https://reqres.in/api/register", {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json",
+           "x-api-key": "reqres-free-v1"
+         },
+         body: JSON.stringify({
+           email: "eve.holt@reqres.in",
+           password: "pistol"
+         })
+       });
+
+       const data = await response.json();
+
+       assert.strictEqual(response.status, 200);
+       assert.ok(data.id);
+       assert.ok(data.token);
+     });
+
 });
