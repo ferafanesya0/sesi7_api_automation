@@ -30,4 +30,14 @@ describe("Feature Reqres", function () {
     assert.strictEqual(data.name, "shinta");
     assert.strictEqual(data.job, "leader");
   });
+
+  //tugas
+  it("GET Single User (ID = 2)", async function () {
+        const response = await fetch("https://reqres.in/api/users/2");
+        const data = await response.json();
+
+        assert.strictEqual(response.status, 200);
+        assert.strictEqual(data.data.id, 2);
+        assert.strictEqual(data.data.email, "janet.weaver@reqres.in");
+      });
 });
