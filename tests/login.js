@@ -61,4 +61,24 @@ describe("Feature Reqres", function () {
        assert.ok(data.token);
      });
 
+     it("PATCH Update User", async function () {
+          const response = await fetch("https://reqres.in/api/users/2", {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key": "reqres-free-v1"
+            },
+            body: JSON.stringify({
+              name: "shinta updated",
+              job: "developer"
+            })
+          });
+
+          const data = await response.json();
+
+          assert.strictEqual(response.status, 200);
+          assert.strictEqual(data.name, "shinta updated");
+          assert.strictEqual(data.job, "developer");
+        });
+
 });
